@@ -9,13 +9,12 @@ export default function CreateRoomModal(props) {
     messages: [],
   });
   const handleChange = (event) => {
-    // to do : setRoom state based in input
+    setRoom({ ...room, [event.target.name]: event.target.value });
   };
   const handleSubmit = (event) => {
-    // to do : stop page from refreshing
-    // call a function from app to create a room (pass room as a parameter)
-
-    props.closeModal(); // this is to close the modal that is shown
+    event.preventDefault();
+    props.createRoom(room);
+    props.closeModal();
   };
   return (
     <Modal centered show={props.isOpen} onHide={props.closeModal}>
